@@ -2,67 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 1f;
-    public Rigidbody rb;
-    private int score = 0;
-    public int health = 5;
-    
 
-    
+    public Rigidbody rb;
+
+    private int score = 0;
+
+    public int health = 5;
+
+    public Text scoreText;
+
+    public Text healthText;
+
+    void SetScoreText()
+    {
+        score++;
+        scoreText.text = "Score: " + score;
+        // scoreText.text = $"Score: {this.score}" ;
+    }
+
+    void SetHealthText()
+    {
+        health--;
+        healthText.text = "Health: " + health;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Pickup")
+        if (other.tag == "Pickup")
         {
-            score++;
-            Debug.Log($"Score: {score}");
+            // Debug.Log($"Score: {score}");
             Destroy(other.gameObject);
-        }
-        
-        if(other.tag == "Trap")
-        {
-            health--;
-            Debug.Log($"Health: {health}");
+            SetScoreText();
         }
 
-        if(other.tag == "Goal")
+        if (other.tag == "Trap")
+        {
+            // Debug.Log($"Health: {health}");
+            SetHealthText();
+        }
+
+        if (other.tag == "Goal")
         {
             Debug.Log("You win!");
         }
     }
-    
-    
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Input.GetKey("w") || Input.GetKey("up"))
+        if (Input.GetKey("w") || Input.GetKey("up"))
         {
-            rb.AddForce(0, 0, speed * Time.deltaTime);
+            rb.AddForce(Vector3.forward * speed * Time.deltaTime);
         }
 
-        if(Input.GetKey("s") || Input.GetKey("down"))
+        if (Input.GetKey("s") || Input.GetKey("down"))
         {
-            rb.AddForce(0, 0, -speed * Time.deltaTime);
+            rb.AddForce(Vector3.back * speed * Time.deltaTime);
         }
 
-        if(Input.GetKey("a") || Input.GetKey("left"))
+        if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            rb.AddForce(-speed * Time.deltaTime, 0, 0);
+            rb.AddForce(Vector3.left * speed * Time.deltaTime);
         }
 
-        if(Input.GetKey("d") || Input.GetKey("right"))
+        if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            rb.AddForce(speed * Time.deltaTime,0,0);
+            rb.AddForce(Vector3.right * speed * Time.deltaTime);
         }
     }
 
-
     void Update()
     {
-        if(health == 0)
+        if (health == 0)
         {
             Debug.Log("Game Over!");
             SceneManager.LoadScene(0, LoadSceneMode.Single);

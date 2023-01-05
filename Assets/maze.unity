@@ -4956,7 +4956,6 @@ GameObject:
   - component: {fileID: 1361110620}
   - component: {fileID: 1361110619}
   - component: {fileID: 1361110624}
-  - component: {fileID: 1361110625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5068,26 +5067,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f670450fa99d410368a531131a2f9730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
+  speed: 500
   rb: {fileID: 1361110619}
   health: 5
-  scoreText: {fileID: 0}
---- !u!114 &1361110625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361110618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f670450fa99d410368a531131a2f9730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1000
-  rb: {fileID: 1361110619}
-  health: 5
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1935028836}
+  healthText: {fileID: 944431162}
 --- !u!1001 &1362246571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7138,7 +7122,6 @@ GameObject:
   - component: {fileID: 1935028837}
   - component: {fileID: 1935028836}
   - component: {fileID: 1935028838}
-  - component: {fileID: 1935028839}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -7223,23 +7206,7 @@ MonoBehaviour:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"scoreText","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"PlayerController,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
-    - {fileID: 1361110624}
---- !u!114 &1935028839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935028834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f670450fa99d410368a531131a2f9730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rb: {fileID: 1361110619}
-  health: 5
-  scoreText: {fileID: 1935028836}
+    - {fileID: 0}
 --- !u!1 &1940181785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4569380227121330246, guid: 9cd3aa86491dc4bc4863c3ea28beeb14,
