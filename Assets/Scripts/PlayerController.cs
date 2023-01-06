@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
 
     public Text healthText;
 
+    public GameObject WinLoseBG;
+
+    public Text WinLoseText;
+
     void SetScoreText()
     {
         score++;
@@ -48,7 +52,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Goal")
         {
-            Debug.Log("You win!");
+            WinLoseBG.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+            WinLoseText.GetComponent<Text>().color = new Color32(0, 0, 0, 255);
+            WinLoseText.text = "You Win!";
+            WinLoseBG.SetActive(true);
+            StartCoroutine(LoadScene(5));
         }
     }
 
@@ -78,10 +86,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+        
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            WinLoseBG.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+            WinLoseText.GetComponent<Text>().color = new Color32(255, 255, 255, 255);
+            WinLoseText.text = "Game Over!";
+            WinLoseBG.SetActive(true);
+            StartCoroutine(LoadScene(5));
         }
+    }
+
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene("maze");
     }
 }
